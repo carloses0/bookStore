@@ -1,0 +1,36 @@
+<form class="example-form">
+    <mat-form-field class="example-fu ll-width">
+      <mat-label>Search something</mat-label>
+        <input class="mdc-text-field__input" matInput placeholder="Ex. Pizza" (keyup)="onSearch($event)">
+    </mat-form-field>
+</form>
+
+<section class="container">
+    <mat-card-header>
+        <mat-card-title>Books Store</mat-card-title>
+        
+    </mat-card-header>
+    <div class="row">
+      <div class="col-100 py-20">
+        <ul class="list-group">
+          <li class="list-item" *ngFor="let n of books$ | async">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>{{ n.volumeInfo.title }}</mat-card-title>
+                  <mat-card-subtitle>{{ n.volumeInfo.authors }}</mat-card-subtitle>
+                </mat-card-header>
+                <div class="row">
+                    <img class="img-book" [src]="n.volumeInfo.imageLinks.thumbnail" />
+                    <mat-card-content>
+                    <p>
+                        {{n.volumeInfo.description}}
+                    </p>
+                    </mat-card-content>
+                </div>
+              </mat-card>
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
